@@ -1,0 +1,39 @@
+/*
+practica para simular o comportamento das portas lóxicas.
+o setup activa unha salida luminosa en función de tres entradas 
+de interruptores, de maneira que cumplan coas funciónss
+dixital a seguir:
+f=not a * b * not c + not a * b* c + a * not b *c + a *b *C=
+=not a * b + a*c
+
+entradas pins 10,9 e 8 (dixitais)
+salidas pin 11 (dixital)
+*/
+
+#define A 10
+#define B 9
+#define C 8
+#define LAMP 11
+
+bool a = 0;
+bool b = 0;
+bool c = 0;
+
+void setup() {
+  pinMode(A, INPUT);
+   pinMode(B, INPUT);
+   pinMode(C, INPUT);
+   pinMode(LAMP, OUTPUT); 
+}
+  
+  void loop(){
+    a = digitalRead(A);
+    b = digitalRead(B);
+    c = digitalRead(C);
+    if(!a && b && !c || !a && b && c || a && !b && c || a && b && c) {
+      digitalWrite(LAMP, HIGH);
+    }
+    else {
+      digitalWrite(LAMP, LOW);
+    }
+   }
